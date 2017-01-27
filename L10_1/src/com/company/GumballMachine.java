@@ -4,7 +4,7 @@ package com.company;
  * Created by Roy.Leung on 27/1/17.
  */
 public class GumballMachine {
-    final static int SOILD_OUT = 0;
+    final static int SOLD_OUT = 0;
     final static int NO_QUAETER = 1;
     final static int HAS_QUARTER = 2;
     final static int SOLD = 3;
@@ -14,11 +14,16 @@ public class GumballMachine {
 
     public GumballMachine(int count) {
         this.count = count;
+
+        if (count == 0) {
+            state = SOLD_OUT;
+        } else
+            state = NO_QUAETER;
     }
 
     public void insertQuaeter() {
         switch (state) {
-            case SOILD_OUT:
+            case SOLD_OUT:
                 System.out.println(NO_SUPPORT_ACTION);
                 break;
             case NO_QUAETER:
@@ -36,7 +41,7 @@ public class GumballMachine {
 
     public void ejectQuaeter() {
         switch (state) {
-            case SOILD_OUT:
+            case SOLD_OUT:
                 System.out.println(NO_SUPPORT_ACTION);
                 break;
             case NO_QUAETER:
@@ -54,7 +59,7 @@ public class GumballMachine {
 
     public void turnCrank() {
         switch (state) {
-            case SOILD_OUT:
+            case SOLD_OUT:
                 System.out.println(NO_SUPPORT_ACTION);
                 break;
             case NO_QUAETER:
@@ -72,7 +77,7 @@ public class GumballMachine {
 
     public void dispense() {
         switch (state) {
-            case SOILD_OUT:
+            case SOLD_OUT:
                 System.out.println(NO_SUPPORT_ACTION);
                 break;
             case NO_QUAETER:
@@ -86,7 +91,7 @@ public class GumballMachine {
                 count--;
                 if (count == 0) {
                     System.out.println("Oops,out of gumballs");
-                    state = SOILD_OUT;
+                    state = SOLD_OUT;
                 } else {
                     state = NO_QUAETER;
                 }
